@@ -20,10 +20,10 @@ For more information regarding the paper, please visit www.evolvingai.org/mfv
 * Some Python libraries are required and can be installed quickly via e.g. Anaconda
 
 ## Usage
-1. Starting optimization from mean images. Here I provided 10 mean images for bell pepper class (id=945).
+* Starting optimization from mean images. Here I provided 10 mean images for bell pepper class (id=945).
     ./opt_from_mean.sh 945
 
-2. Optimizing images with "center-bias reqgularization" (CBR)
+* Optimizing images with "center-bias reqgularization" (CBR)
    ./opt_center_bias.sh 945  
 
 ## Notes
