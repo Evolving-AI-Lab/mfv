@@ -29,9 +29,11 @@ For more information regarding the paper, please visit www.evolvingai.org/mfv
    ./opt_center_bias.sh 945  
 
 ## Notes
-Examples are not provided, but with the code, you could also try other experiments like:
-* Running CBR from a mean image (Fig. S8 in the paper)
-* Starting from a real image (Fig. S1 in the paper)
+* Examples are not provided, but with the code, you could also try other experiments like:
+ * Running CBR from a mean image (Fig. S8 in the paper)
+ * Starting from a real image (Fig. S1 in the paper)
+
+* In the paper, we show different ways to compute the mean image (e.g. from training or val set). The code for this is not include here, but is relatively straightforward to implement (see paper for more).
 
 Feel free to create github issues. We will help you as we can.
 
