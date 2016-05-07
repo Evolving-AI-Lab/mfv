@@ -33,7 +33,7 @@ For more information regarding the paper, please visit www.evolvingai.org/mfv
  * Running CBR from a mean image (Fig. S8 in the paper)
  * Starting from a real image (Fig. S1 in the paper)
 
-* In the paper, we show different ways to compute the mean image (e.g. from training or val set). The code for this is not include here, but is relatively straightforward to implement (see paper for more).
+* In the paper, we show different ways to compute the mean image (e.g. from training or val set). The code for this is not include here, but is quite straightforward to implement (see paper for more).
 
 Feel free to create github issues. We will help you as we can.
 
