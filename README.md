@@ -27,7 +27,7 @@ For more information regarding the paper, please visit www.evolvingai.org/mfv
     ./opt_center_bias.sh 945  
 
 ## Notes
-You could try other experiments like:
+Examples are not provided, but with the code, you could also try other experiments like:
 * Running CBR from a mean image (Fig. S8 in the paper)
 * Starting from a real image (Fig. S1 in the paper)
 
