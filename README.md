@@ -1,36 +1,41 @@
-# Innovation Engine
+# Multifaceted Feature Visualization
 
 This is the code base used to reproduce the experiments in the paper:
 
-[Nguyen A](http://anhnguyen.me), [Yosinski J](http://yosinski.com/), [Clune J](http://jeffclune.com). ["Innovation Engines: Automated creativity and improved stochastic optimization via Deep Learning"](http://www.evolvingai.org/files/InnovationEngine_gecco15.pdf). Proceedings of the Genetic and Evolutionary Computation Conference (GECCO '15), 2015.
+[Nguyen A](http://anhnguyen.me), [Yosinski J](http://yosinski.com/), [Clune J](http://jeffclune.com). ["Multifaceted Feature Visualization: Uncovering the different types of features learned by each neuron in deep neural networks"](http://www.evolvingai.org/files/nguyen_mfv_2016.pdf). arXiv:1602.03616, 2016
 
 **If you use this software in an academic article, please cite:**
 
-    @inproceedings{nguyen2015innovation,
-      title={Innovation Engines: Automated Creativity and Improved Stochastic Optimization via Deep Learning},
+    @article{nguyen2016multifaceted,
+      title={Multifaceted Feature Visualization: Uncovering the Different Types of Features Learned By Each Neuron in Deep Neural Networks},
       author={Nguyen, Anh and Yosinski, Jason and Clune, Jeff},
-      booktitle={Genetic and Evolutionary Computation Conference (GECCO), 2015 IEEE Conference on},
-      year={2015}
+      journal={arXiv preprint arXiv:1602.03616},
+      year={2016}
     }
 
-For more information regarding the paper, please visit www.evolvingai.org/InnovationEngine
+For more information regarding the paper, please visit www.evolvingai.org/mfv
+
+## Installation
+* Install Caffe and its Python interface
+* Some Python libraries are required and can be installed quickly via e.g. Anaconda
+
+## Usage
+* Starting optimization from mean images. Here I provided 10 mean images for bell pepper class (id=945).
+```bash
+    ./opt_from_mean.sh 945
+```
+
+* Optimizing images with "center-bias reqgularization" (CBR)
+```bash
+   ./opt_center_bias.sh 945  
+```
 
 ## Notes
+* Examples are not provided, but with the code, you could also try other experiments like:
+ * Running CBR from a mean image (Fig. S8 in the paper)
+ * Starting from a real image (Fig. S1 in the paper)
 
-This code base is a fork from the [initial project] (https://github.com/Evolving-AI-Lab/fooling).
-
-* It has support for the latest Caffe.
-* Experiments are in [here](https://github.com/Evolving-AI-Lab/innovation-engine/tree/master/sferes/exp/images/x)
-  * [Novelty Search](https://github.com/Evolving-AI-Lab/innovation-engine/blob/master/sferes/exp/images/x/gecco15/dl_novelty_images_imagenet.cpp)
-  * [MAP-Elites](https://github.com/Evolving-AI-Lab/innovation-engine/blob/master/sferes/exp/images/x/gecco15/dl_map_elites_images.cpp)
-    * [CPPN without Sine waves](https://github.com/Evolving-AI-Lab/innovation-engine/blob/master/sferes/exp/images/x/gecco15/dl_map_elites_images_no_sine.cpp) experiment shows to create a lot of *recognizable* images.
-  * [Single-class EA](https://github.com/Evolving-AI-Lab/innovation-engine/blob/master/sferes/exp/images/x/gecco15/dl_rank_simple_images.cpp)
-  
-
-
-## Requirements and Installation
-
-To start off, please refer to the documentation in the initial [project] (https://github.com/Evolving-AI-Lab/fooling)
+* In the paper, we show different ways to compute the mean image (e.g. from training or val set). The code for this is not include here, but is quite straightforward to implement (see paper for more).
 
 Feel free to create github issues. We will help you as we can.
 
