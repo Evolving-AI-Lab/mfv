@@ -26,7 +26,7 @@ For more information regarding the paper, please visit www.evolvingai.org/mfv
     ./opt_from_mean.sh 498  # movie theater
 ```
 
-* Optimizing images with "center-bias reqgularization" (CBR)
+* Optimizing images with "center-bias regularization" (CBR)
 ```bash
    ./opt_center_bias.sh 945  
 ```
@@ -36,7 +36,7 @@ For more information regarding the paper, please visit www.evolvingai.org/mfv
  * Running CBR from a mean image (Fig. S8 in the paper)
  * Starting from a real image (Fig. S1 in the paper)
 
-* In the paper, we show different ways to compute the mean image (e.g. from training or val set). The code for this is not include here, but is quite straightforward to implement (see paper for more).
+* In the paper, we show different ways to compute the mean image (e.g. from training or val set). The code for this is not provided here, but is straightforward to implement (see paper for more).
 
 Feel free to create github issues. We will help you as we can.
 
