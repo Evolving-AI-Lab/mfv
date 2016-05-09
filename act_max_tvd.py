@@ -15,37 +15,14 @@ import os
 os.environ['GLOG_minloglevel'] = '2'  # suprress Caffe verbose prints
 
 import settings
-import site
-site.addsitedir(settings.caffe_root)
 
 # imports and basic notebook setup
 import argparse
-from cStringIO import StringIO
 import numpy as np
-import os,re,random
 import scipy.ndimage as nd
 import PIL.Image
 import sys
-from IPython.display import clear_output, Image, display
-from scipy.misc import imresize
 from skimage.restoration import denoise_tv_bregman
-
-pycaffe_root = settings.caffe_root # substitute your path here
-sys.path.insert(0, pycaffe_root)
-import caffe
-
-# Layers of AlexNet
-fc_layers = ["fc6", "fc7", "fc8", "prob"]
-conv_layers = ["conv1", "conv2", "conv3", "conv4", "conv5"]
-
-mean = np.float32([104.0, 117.0, 123.0])
-
-if settings.gpu:
-  caffe.set_mode_gpu()
-
-net = caffe.Classifier(settings.model_definition, settings.model_path,
-                       mean = mean, # ImageNet mean, training set dependent
-                       channel_swap = (2,1,0)) # the reference model has channels in BGR order instead of RGB
 
 def get_parser(method, mean=True):
     parser = argparse.ArgumentParser(description='Script to optimize an image based on the "{}"'.format(method),
@@ -76,7 +53,7 @@ def make_step(net, xy, step_size=1.5, end='fc8', clip=True, unit=None, denoise_w
     dst = net.blobs[end]
     acts = net.forward(end=end)
 
-    if end in fc_layers:
+    if end in settings.fc_layers:
         fc = acts[end][0]
         best_unit = fc.argmax()
         best_act = fc[best_unit]
@@ -85,9 +62,9 @@ def make_step(net, xy, step_size=1.5, end='fc8', clip=True, unit=None, denoise_w
 
     one_hot = np.zeros_like(dst.data)
 
-    if end in fc_layers:
+    if end in settings.fc_layers:
       one_hot.flat[unit] = 1.
-    elif end in conv_layers:
+    elif end in settings.conv_layers:
       one_hot[:, unit, xy, xy] = 1.
     else:
       raise Exception("Invalid layer type!")
@@ -113,10 +90,10 @@ def make_step(net, xy, step_size=1.5, end='fc8', clip=True, unit=None, denoise_w
         src.data[:] = np.clip(src.data, -bias, 255-bias)
 
     # Run a separate TV denoising process on the resultant image
-    asimg = deprocess( net, src.data[0] ).astype(np.float64)
+    asimg = deprocess(net, src.data[0]).astype(np.float64)
     denoised = denoise_tv_bregman(asimg, weight=denoise_weight, max_iter=100, eps=1e-3)
 
-    src.data[0] = preprocess( net, denoised )
+    src.data[0] = preprocess(net, denoised)
 
     # reset objective for next step
     dst.diff.fill(0.)
@@ -204,6 +181,16 @@ def max_activation(net, xy, base_img, octaves, random_crop=True, debug=True, uni
 
 
 def run(unit, filename, xy, seed, octaves, image_path=None, output_folder=None):
+    pycaffe_root = settings.caffe_root # substitute your path here
+    sys.path.insert(0, pycaffe_root)
+    import caffe
+    if settings.gpu:
+      caffe.set_mode_gpu()
+
+    net = caffe.Classifier(settings.model_definition, settings.model_path,
+                           mean = settings.mean, # ImageNet mean, training set dependent
+                           channel_swap = (2,1,0)) # the reference model has channels in BGR order instead of RGB
+
     # get original input size of network
     original_w = net.blobs['data'].width
     original_h = net.blobs['data'].height
