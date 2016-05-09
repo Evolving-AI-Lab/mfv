@@ -45,7 +45,13 @@ for unit in `seq ${start} ${end}`; do
     xy=0
     name="${layer}_${idx}"
     # Optimize images maximizing fc8 unit
-    python ./act_max.tvd.mean.py ${unit} ${name} ${layer} ${xy} ${seed} ${mean_file}
-  
+    python ./act_max.tvd.mean.py \
+      --unit=${unit} \
+      --filename=${name} \
+      --layer=${layer} \
+      --xy=${xy} \
+      --seed=${seed} \
+      --start-image=${mean_file}
+
   done
 done

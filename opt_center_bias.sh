@@ -28,6 +28,11 @@ for unit in `seq ${start} ${end}`; do
     xy=0
     name="${layer}_${seed}"
     # Optimize images maximizing fc8 unit
-    python ./act_max.tvd.center.py ${unit} ${name} ${layer} ${xy} ${seed}
+    python ./act_max.tvd.center.py \
+      --unit=${unit} \
+      --filename=${name} \
+      --layer=${layer} \
+      --xy=${xy} \
+      --seed=${seed}
   done
 done
