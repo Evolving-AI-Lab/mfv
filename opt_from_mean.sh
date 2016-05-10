@@ -28,7 +28,8 @@ for unit in `seq ${start} ${end}`; do
     break
   fi
 
-  # Run towards 20 clusters
+  # Run towards e.g 10 clusters
+  # Change this number 0 to the number of clusters we want to visualize
   for idx in {0..0}; do
     mean_file=${d}/mean_${idx}.jpg
 
