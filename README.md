@@ -9,7 +9,8 @@ This is the code base used to reproduce the experiments in the paper:
     @article{nguyen2016multifaceted,
       title={Multifaceted Feature Visualization: Uncovering the Different Types of Features Learned By Each Neuron in Deep Neural Networks},
       author={Nguyen, Anh and Yosinski, Jason and Clune, Jeff},
-      journal={arXiv preprint arXiv:1602.03616},
+      journal={Visualization for Deep Learning workshop, International Conference in Machine Learning},
+      note={arXiv preprint arXiv:1602.03616},
       year={2016}
     }
 
