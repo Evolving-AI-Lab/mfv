@@ -2,7 +2,7 @@
 
 This is the code base used to reproduce the experiments in the paper:
 
-[Nguyen A](http://anhnguyen.me), [Yosinski J](http://yosinski.com/), [Clune J](http://jeffclune.com). ["Multifaceted Feature Visualization: Uncovering the different types of features learned by each neuron in deep neural networks"](http://www.evolvingai.org/files/nguyen_mfv_2016.pdf). arXiv:1602.03616, 2016
+[Nguyen A](http://anhnguyen.me), [Yosinski J](http://yosinski.com/), [Clune J](http://jeffclune.com). ["Multifaceted Feature Visualization: Uncovering the different types of features learned by each neuron in deep neural networks"](http://www.evolvingai.org/files/mfv_icml_workshop_16.pdf). Visualization for Deep Learning workshop. ICML 2016
 
 **If you use this software in an academic article, please cite:**
 
